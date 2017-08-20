@@ -1,0 +1,6 @@
+default:
+  clients:
+    default:
+      database: fox_crawler
+      hosts:
+        - localhost:27017
