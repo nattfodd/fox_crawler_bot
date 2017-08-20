@@ -6,9 +6,9 @@ module TelegramNotifier
     class << self
       # https://api.telegram.org/bot390375186:AAFyJId3y7mRqL9OUsIPrBS57_tkPnNLXg4/
       # sendMessage?chat_id=105873179&text=%22Hello!%22
-      def send_message(user_id, message)
+      def send_message(user_id, message, params = {})
         url = "#{API_URL}#{__config__['token']}/sendMessage"
-        __connection__.post(url, { chat_id: user_id, text: message })
+        __connection__.post(url, params.merge({ chat_id: user_id, text: message }))
       end
 
       def register_webhook
