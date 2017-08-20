@@ -1,0 +1,24 @@
+.bundle
+.bashrc
+log/*.log
+tmp/
+
+# Configuration files
+config/telegram.yml
+
+# Temporary editors files
+*~
+*.bak
+*.swp
+
+# CTags fields
+.gemtags
+.tags
+.tags_sorted_by_file
+
+# RVM
+.rvmrc
+.ruby-gemset
+
+# Mac files
+.DS_Store
