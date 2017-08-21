@@ -3,8 +3,11 @@ module TelegramNotifier
     class Subscriptions
 
       class << self
-        def get_subscriptions
-          Models::Subscription.all
+        def get_subscriptions(user_id = nil)
+          result = Models::Subscription.all
+          return result unless user_id
+
+          result.where(users_ids: { '$in' => [ user_id ] })
         end
 
         def add_subscriber(url:, user_id:)
