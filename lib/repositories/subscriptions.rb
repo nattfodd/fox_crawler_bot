@@ -16,6 +16,7 @@ module TelegramNotifier
             users_ids = subscription.users_ids + [ user_id ]
             subscription.users_ids = users_ids.compact.uniq
             subscription.save
+            subscription
           else
             Models::Subscription.create(url: url, users_ids: [ user_id ])
           end
