@@ -3,9 +3,23 @@ module TelegramNotifier
     class Base
       attr_reader :base_url
 
+      # Base class is for inheritance only
+      SITE_REGEXP = nil
+      SITE_URL    = nil
+
+      class << self
+        def enabled(flag = nil)
+          @enabled = flag
+        end
+
+        def enabled?
+          @enabled.nil? ? true : @enabled
+        end
+      end
+
       def applies?
-        # Base class is for inheritance only
-        false
+        self.class.enabled? &&
+          ( self.class::SITE_REGEXP && base_url =~ self.class::SITE_REGEXP)
       end
 
       def initialize(url)

@@ -1,9 +1,9 @@
 module TelegramNotifier
   module Crawlers
     class Olx < Base
-      def applies?
-        base_url =~ /olx\.ua/
-      end
+
+      SITE_REGEXP = /olx\.ua/
+      SITE_URL    = 'http://olx.ua'
 
       def collect_ads
         super do |page, agent|

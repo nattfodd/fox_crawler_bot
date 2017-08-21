@@ -1,9 +1,9 @@
 module TelegramNotifier
   module Crawlers
     class Rst < Base
-      def applies?
-        base_url =~ /rst\.ua/
-      end
+
+      SITE_REGEXP = /rst\.ua/
+      SITE_URL    = 'http://rst.ua'
 
       def collect_ads
         super do |page, agent|
