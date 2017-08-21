@@ -14,7 +14,7 @@ module TelegramNotifier
 
         API.send_message(user_id, "Вы подписаны на следующие обновления:")
         subscriptions.each do |sub|
-          API.send_message(user_id, sub.url)
+          API.send_message(user_id, sub.url, disable_web_page_preview: true)
         end
         true
       end
