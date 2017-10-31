@@ -1,1 +1,1 @@
-token: 444444444:AAA_xXXx0XX0xxX0XXXxXXXxx0xxxX0XXxX
+token: <%= ENV['BOT_TOKEN'] %>
