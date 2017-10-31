@@ -22,3 +22,5 @@ config/telegram.yml
 
 # Mac files
 .DS_Store
+
+bin/long_polling.rb.pid

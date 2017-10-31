@@ -18,6 +18,8 @@ module TelegramNotifier
       def get_updates(params = {})
         url = "#{API_URL}#{__config__['token']}/getUpdates"
         __connection__.post(url, params)
+      rescue Faraday::Error::TimeoutError
+        retry
       end
 
       def __connection__
@@ -25,7 +27,11 @@ module TelegramNotifier
       end
 
       def __config__
-        @config ||= YAML.load_file("#{TelegramNotifier.root}/config/telegram.yml")
+        @config ||=
+          begin
+            config_path = "#{TelegramNotifier.root}/config/telegram.yml"
+            YAML.load(ERB.new(File.read(config_path)).result)
+          end
       end
     end
   end
